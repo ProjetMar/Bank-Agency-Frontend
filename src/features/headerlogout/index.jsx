@@ -3,8 +3,8 @@ import { useDispatch } from 'react-redux';
 import { logout } from '../../features/userSlice'; 
 import { useNavigate } from 'react-router-dom';
 
-
-export function Headerlogout (){
+/* eslint-disable react/prop-types */
+export function Headerlogout ({nameOfUser}){
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
@@ -22,7 +22,7 @@ export function Headerlogout (){
         <>
          <Link className="main-nav-item" to={`/user`}>
           <i className="fa fa-user-circle"></i>
-          Tony
+          {nameOfUser}
          </Link>
          <button className="main-nav-item" onClick={handleLogout}  style={{ border: 'none', background: 'none', cursor: 'pointer', fontWeight:'bold' }}>
           <i className="fa fa-sign-out"></i>

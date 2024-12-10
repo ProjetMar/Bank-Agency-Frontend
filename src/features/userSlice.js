@@ -17,7 +17,9 @@ export const loginAsync = createAsyncThunk(
       }
 
       const data = await response.json();
-      localStorage.setItem('token', data.token);  // Sauvegarder le token
+      console.log('Token reçu:', data.body.token);
+      localStorage.setItem('token', data.body.token);  // Sauvegarder le token
+      console.log('Token sauvegardé dans localStorage:', localStorage.getItem('token'));
       return { email, token: data.token };
     } catch (error) {
       return rejectWithValue(error.message);
