@@ -2,28 +2,24 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
 export const loginAsync = createAsyncThunk(
   'user/login',
-  async ({ email, password }, { rejectWithValue }) => {
-    try {
-      const response = await fetch('http://localhost:3001/api/v1/user/login', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ email, password }),
-      });
+  async ({ email, password }) => {
+    const response = await fetch('http://localhost:3001/api/v1/user/login', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ email, password }),
+    });
 
-      if (!response.ok) {
-        throw new Error('Échec de la connexion');
-      }
-
-      const data = await response.json();
-      console.log('Token reçu:', data.body.token);
-      localStorage.setItem('token', data.body.token);  // Sauvegarder le token
-      console.log('Token sauvegardé dans localStorage:', localStorage.getItem('token'));
-      return { email, token: data.token };
-    } catch (error) {
-      return rejectWithValue(error.message);
+    if (!response.ok) {
+      throw new Error('Échec de la connexion');
     }
+
+    const data = await response.json();
+    console.log('Token reçu:', data.body.token);
+    localStorage.setItem('token', data.body.token); // Sauvegarder le token
+    console.log('Token sauvegardé dans localStorage:', localStorage.getItem('token'));
+    return { email, token: data.body.token };
   }
 );
 
@@ -51,7 +47,7 @@ const userSlice = createSlice({
         state.token = action.payload.token;
       })
       .addCase(loginAsync.rejected, (state, action) => {
-        state.error = action.payload;
+        state.error = action.error.message;
       });
   },
 });
