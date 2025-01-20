@@ -1,6 +1,6 @@
 import { Footer } from "../../features/footer"
 import { Header } from "../../features/header"
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { loginAsync } from '../../features/userSlice';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
@@ -13,7 +13,7 @@ function SignIn(){
     const [password, setPassword] = useState('');
     const dispatch = useDispatch();
     const navigate = useNavigate();
-    // const error = useSelector((state) => state.user.error);
+    const error = useSelector((state) => state.user.error);
 
     const handleLogin = async (e) => {
     e.preventDefault();
@@ -53,6 +53,7 @@ function SignIn(){
                      <button className="sign-in-button" type="submit">Sign In</button>
         
                     </form>
+                    {error && <div className="error-message">{error}</div>}
                 </section>
             </main>
             <Footer/>

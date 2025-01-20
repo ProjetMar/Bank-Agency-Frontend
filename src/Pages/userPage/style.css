@@ -11,3 +11,37 @@
     color: #fff;
     margin-bottom: 2rem;
   }
+  .buttons-block{
+    display: flex;
+    width: 50%;
+    margin: auto;
+    justify-content: center;
+  }
+  .form-block{
+    display: flex;
+    justify-content: center;
+  }
+  .input-block{
+    display: flex;
+  }
+  .margin-right{
+    margin-right: 10px;
+  }
+  .button-style{
+    width: 100px;
+    color: blue;
+    padding-top: 5px;
+    padding-bottom: 5px;
+  }
+  .border-style{
+    border: 0.1rem solid #ccc;
+  }
+  /* Style par défaut (grisé) */
+input.defaut {
+  color: grey;
+}
+
+/* Style une fois rempli (noir) */
+input.rempli {
+  color: black;
+}

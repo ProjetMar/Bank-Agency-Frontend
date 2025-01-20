@@ -80,24 +80,34 @@ const Accounts = [
                            Edit Name
                   </button>
                  ) : (
-                 <form onSubmit={handleUpdate}>
-                    <div className="input-wrapper">
-                        <label htmlFor="firstname">Firstname</label>
-                        <input type="string" value={Firstname} onChange={(e) => setFirstname(e.target.value)} id="firstname" />
-                    </div>
-                    <div className="input-wrapper">
-                        <label htmlFor="lastname">LastName</label>
-                        <input type="string" value={Lastname} onChange={(e) => setLastname(e.target.value)} id="lastname" />
-                    </div>
-                    
-                    {/* <!-- PLACEHOLDER DUE TO STATIC SITE --> */}
-                    {/* <a href="./user.html" className="sign-in-button">Sign In</a> */}
-                    {/* <!-- SHOULD BE THE BUTTON BELOW -->*/}
-                    <div className="buttons-block">
-                      <button className="sign-in-button" type="submit">Save</button>
-                      <button type="button" onClick={handleCancelClick}>Cancel</button>
-                    </div>
-                 </form>
+                  <div className="form-block">
+                    <form onSubmit={handleUpdate}>
+                        <div className="input-block">
+                          <div className="input-wrapper margin-right border-style">
+                              <input type="string" 
+                                 value={Firstname} 
+                                 onChange={(e) => setFirstname(e.target.value)} 
+                                 placeholder="Firstname" 
+                                 className={Firstname === firstname ? 'defaut' : 'rempli'} id="firstname" />
+                          </div>
+                          <div className="input-wrapper border-style">
+                              <input type="string" 
+                                 value={Lastname} 
+                                 onChange={(e) => setLastname(e.target.value)} 
+                                 placeholder="Lastname" 
+                                 className={Lastname === lastname ? 'defaut' : 'rempli'} id="lastname" />
+                          </div>
+                        </div>
+                        
+                        {/* <!-- PLACEHOLDER DUE TO STATIC SITE --> */}
+                        {/* <a href="./user.html" className="sign-in-button">Sign In</a> */}
+                        {/* <!-- SHOULD BE THE BUTTON BELOW -->*/}
+                        <div className="buttons-block">
+                          <button type="submit" className="margin-right button-style border-style">Save</button>
+                          <button className="button-style border-style" type="button" onClick={handleCancelClick}>Cancel</button>
+                        </div>
+                    </form>
+                  </div>
                  )}
                  
                </div>
