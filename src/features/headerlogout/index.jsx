@@ -10,11 +10,7 @@ export function Headerlogout ({nameOfUser}){
 
     const handleLogout = () => {
       // Action Redux pour réinitialiser l'état utilisateur
-      dispatch(logout());
-
-      // Supprimer le token JWT du localStorage si utilisé
-      localStorage.removeItem('token');
-  
+      dispatch(logout()); 
       // Rediriger vers la page d'accueil ou de connexion
       navigate('/');
     };

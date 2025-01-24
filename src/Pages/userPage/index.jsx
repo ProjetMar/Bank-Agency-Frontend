@@ -24,9 +24,9 @@ const Accounts = [
         amount: '$184.30',
         description:'Current Balance',
     },
-  ]; 
+]; 
 
- function User(){
+function User(){
   const dispatch = useDispatch();
 
   // Récupérer les données depuis le store
@@ -38,6 +38,11 @@ const Accounts = [
 
   const handleEditClick = () => setIsEditing(true);
   const handleCancelClick = () => setIsEditing(false);
+
+   // Charger les données du profil au montage du composant
+   useEffect(() => {
+    dispatch(userProfile());
+  }, [dispatch]);
 
   const handleUpdate = async (e) => {
     // document.getElementById("edit-button").classList.add('display-off')
@@ -54,13 +59,6 @@ const Accounts = [
       }); // Dispatch vers Redux
       setIsEditing(false);
   };
-  // const handleDelate = () =>{
-
-  // }
-  // Charger les données du profil au montage du composant
-  useEffect(() => {
-    dispatch(userProfile());
-  }, [dispatch]);
   // changer la valeur par defaut de l'input qui est null initialement par les valeur de firstname et lastname 
   useEffect(() => {
     if (firstname && lastname) {
@@ -98,10 +96,6 @@ const Accounts = [
                                  className={Lastname === lastname ? 'defaut' : 'rempli'} id="lastname" />
                           </div>
                         </div>
-                        
-                        {/* <!-- PLACEHOLDER DUE TO STATIC SITE --> */}
-                        {/* <a href="./user.html" className="sign-in-button">Sign In</a> */}
-                        {/* <!-- SHOULD BE THE BUTTON BELOW -->*/}
                         <div className="buttons-block">
                           <button type="submit" className="margin-right button-style border-style">Save</button>
                           <button className="button-style border-style" type="button" onClick={handleCancelClick}>Cancel</button>

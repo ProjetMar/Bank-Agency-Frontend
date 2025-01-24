@@ -20,13 +20,13 @@ export const updateProfile = createAsyncThunk(
     console.log('Response status:', response.status)
     const data = await response.json();
     console.log('Data received:', data);
-    return { data };
+    return { firstname: data.body.firstName, lastname: data.body.lastName };
     
   }
 );
 
 const updateProfileSlice = createSlice({
-  name: 'profile',
+  name: 'updateProfile',
   initialState: {
     firstname: null,
     lastname: null,
@@ -36,9 +36,8 @@ const updateProfileSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(updateProfile.fulfilled, (state, action) => {
-        const { firstName, lastName } = action.payload.data; 
-        state.firstname = firstName; 
-        state.lastname = lastName;   
+        state.firstname = action.payload.firstname; 
+        state.lastname = action.payload.lastname;   
         state.error = null;       
       })
       .addCase(updateProfile.rejected, (state, action) => {

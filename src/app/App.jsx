@@ -8,8 +8,6 @@ import UserPage from '../../src/Pages/userPage'
 import './App.css'
 import { Provider } from 'react-redux';
 import store from './store';
-// import MainLayout from './Components/MainLayout'
-// import NotFound from './Pages/NotFound'
 const root = createRoot(document.getElementById('root'))
 root.render(
     <Provider store={store}>
@@ -19,7 +17,6 @@ root.render(
                     <Route path="/" element={<HomePage />}/>
                     <Route path="/login" element={<SignInPage />}/>
                     <Route path="/user" element={<UserPage/>}/>
-                    {/* <Route path="*" element={<MainLayout><NotFound /></MainLayout>} /> */}
                 </Routes>
             </Router>
         </React.StrictMode>
